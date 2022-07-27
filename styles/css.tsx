@@ -12,6 +12,7 @@ export const PageContent = styled('div')(() => ({
 
 export const PageTitle = styled('h1')(() => ({
   textTransform: 'uppercase',
+  fontSize: '36px',
   color: '#ffffff',
   textAlign: 'center',
 }));

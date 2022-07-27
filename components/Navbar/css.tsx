@@ -17,6 +17,7 @@ export const NavbarLogo = styled('h1')(() => ({
   color: '#ffffff',
   fontSize: '24px',
   lineHeight: '24px',
+  fontWeight: 300,
   textTransform: 'uppercase',
 }));
 
