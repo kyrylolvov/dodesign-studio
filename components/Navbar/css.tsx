@@ -16,7 +16,6 @@ export const NavbarContainer = styled('header')<{scrollPosition: number}>(({ scr
 export const NavbarLogo = styled('h1')(() => ({
   color: '#ffffff',
   fontSize: '24px',
-  fontWeight: '300',
   lineHeight: '24px',
   textTransform: 'uppercase',
 }));
