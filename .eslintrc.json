@@ -1,5 +1,8 @@
 {
-  "extends": ["next/core-web-vitals", "airbnb-base"],
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb-base"
+  ],
   "rules": {
     "import/extensions": [
       "error",
@@ -9,6 +12,12 @@
         "jsx": "never",
         "ts": "never",
         "tsx": "never"
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120
       }
     ]
   }

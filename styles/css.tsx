@@ -27,3 +27,11 @@ export const PageTitle = styled('h1')(() => ({
     background: '#ffffff',
   },
 }));
+
+export const PageParagraph = styled('p')(() => ({
+  fontWeight: 300,
+  whiteSpace: 'pre-wrap',
+  fontSize: '1.125rem',
+  lineHeight: '1.5rem',
+  color: '#ffffff',
+}));

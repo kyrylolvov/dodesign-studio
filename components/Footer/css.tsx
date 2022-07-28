@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Theme } from '@mui/material';
 
 export const FooterContainer = styled('footer')<{ theme?: Theme }>(({ theme }) => ({
-  width: '70vw',
+  width: '80vw',
   fontSize: '0.875rem',
   paddingTop: '36px',
   margin: '64px auto 0 auto',
@@ -14,7 +14,8 @@ export const FooterContainer = styled('footer')<{ theme?: Theme }>(({ theme }) =
     gridTemplateColumns: '1fr 1fr 1fr',
 
     '& > :first-child': {
-      order: 1,
+      gridColumn: 2,
+      gridRow: 2,
     },
   },
 
@@ -23,14 +24,28 @@ export const FooterContainer = styled('footer')<{ theme?: Theme }>(({ theme }) =
     gridGap: '32px',
     justifyItems: 'center',
     textAlign: 'center',
+
+    '& > :first-child': {
+      gridColumn: 1,
+      gridRow: 4,
+    },
   },
 }));
 
-export const FooterLogo = styled('h1')(() => ({
+export const FooterLogo = styled('h1')<{ theme?: Theme }>(({ theme }) => ({
   color: '#ffffff',
   fontSize: '0.875rem',
   fontWeight: 300,
   textTransform: 'uppercase',
+
+  [theme.breakpoints.down('md')]: {
+    textAlign: 'center',
+    marginTop: '32px',
+  },
+
+  [theme.breakpoints.down('sm')]: {
+    marginTop: 0,
+  },
 }));
 
 export const FooterLinksContainer = styled('div')<{ theme?: Theme }>(({ theme }) => ({

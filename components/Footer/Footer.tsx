@@ -6,6 +6,8 @@ import { faBehance, faFacebookSquare, faInstagram } from '@fortawesome/free-bran
 
 import { ContactPaths, MenuPaths, SocialMediaPaths } from '../../utils/routes';
 
+import Button from '../Button/Button';
+
 import {
   FooterContainer,
   FooterLink,
@@ -15,7 +17,6 @@ import {
   FooterSocialMediaIcon,
   FooterSocialMediaContainer,
 } from './css';
-import Button from '../Button/Button';
 
 const Footer: React.FC = () => {
   const router = useRouter();
@@ -74,7 +75,7 @@ const Footer: React.FC = () => {
         </Link>
         <Link href={ContactPaths.phone} passHref>
           <FooterSocialMediaContainer>
-            <FooterSocialMediaLink>+1 437 345 2001</FooterSocialMediaLink>
+            <FooterSocialMediaLink> +1 437 345 2001</FooterSocialMediaLink>
           </FooterSocialMediaContainer>
         </Link>
         <Button style={{ marginTop: '24px' }} text="Request a call" />
