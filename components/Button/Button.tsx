@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 interface ButtonProps {
   text: string;
+  style?: React.CSSProperties | undefined;
 }
 
 export const BrandButton = styled('button')(() => ({
@@ -22,6 +23,9 @@ export const BrandButton = styled('button')(() => ({
   },
 }));
 
-const Button: React.FC<ButtonProps> = ({ text }) => <BrandButton>{text}</BrandButton>;
+const Button: React.FC<ButtonProps> = ({
+  text,
+  style,
+}) => <BrandButton style={style}>{text}</BrandButton>;
 
 export default Button;

@@ -11,8 +11,19 @@ export const PageContent = styled('div')(() => ({
 }));
 
 export const PageTitle = styled('h1')(() => ({
+  position: 'relative',
   textTransform: 'uppercase',
   fontSize: '36px',
   color: '#ffffff',
   textAlign: 'center',
+
+  '&:after': {
+    position: 'absolute',
+    content: '""',
+    bottom: '-1rem',
+    left: 'calc(50% - 15px)',
+    height: '1px',
+    width: '30px',
+    background: '#ffffff',
+  },
 }));

@@ -2,20 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { MenuPaths } from '../../utils/routes';
+
 import {
   NavbarContainer, NavbarLink, NavbarLinksContainer, NavbarLogo,
 } from './css';
 
 const Navbar: React.FC = () => {
   const router = useRouter();
-
-  const MenuPaths = {
-    home: '/',
-    about: '/about',
-    projects: '/projects',
-    services: '/services',
-    contact: '/contact',
-  };
 
   const [scrollPosition, setScrollPosition] = useState<number>(0);
 

@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const NavbarContainer = styled('header')<{scrollPosition: number}>(({ scrollPosition }) => ({
   position: 'fixed',
+  fontSize: '0.875rem',
   top: 0,
   width: '100%',
   display: 'flex',
