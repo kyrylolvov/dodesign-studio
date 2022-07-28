@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Footer from '../components/Footer/Footer';
@@ -21,6 +22,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <link rel="icon" href="/images/favicon.ico" />
+      </Head>
       <Navbar />
       <Component {...pageProps} />
       <Footer />
