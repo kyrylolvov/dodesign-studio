@@ -4,7 +4,7 @@ import { Theme } from '@mui/material';
 export const FooterContainer = styled('footer')<{ theme?: Theme }>(({ theme }) => ({
   width: '80vw',
   fontSize: '0.875rem',
-  paddingTop: '36px',
+  padding: '36px 0',
   margin: '64px auto 0 auto',
   borderTop: '1px solid #ffffff',
   display: 'grid',
