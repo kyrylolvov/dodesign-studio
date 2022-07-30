@@ -11,8 +11,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const theme = createTheme({
     breakpoints: {
       values: {
-        xs: 0,
-        sm: 700,
+        xs: 570,
+        sm: 750,
         md: 1000,
         lg: 1200,
         xl: 1536,

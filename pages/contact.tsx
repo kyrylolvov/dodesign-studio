@@ -3,11 +3,14 @@ import Head from 'next/head';
 import Link from 'next/link';
 import * as yup from 'yup';
 import { Formik, Form } from 'formik';
+import emailjs from '@emailjs/browser';
 
 import Button from '../components/Button/Button';
 import Input from '../components/Input/Input';
 
-import { FormContainer, FormSubTitle, FormTitle } from '../styles/contact';
+import {
+  FormButtonContainer, FormContainer, FormSubTitle, FormTitle,
+} from '../styles/contact';
 
 import {
   PageContent, PageContainer, PageTitle, PageContentHalf, PageParagraph, PageExternalLink,
@@ -20,12 +23,14 @@ const Contact: NextPage = () => {
     name: '',
     email: '',
     message: '',
+    phone: '',
   };
 
   const validationSchema = yup.object({
     name: yup.string().required('This field is required.'),
     email: yup.string().required('This field is required.').email('Please enter a valid email address.'),
     message: yup.string().required('This field is required.'),
+    phone: yup.string(),
   });
 
   return (
@@ -47,7 +52,7 @@ const Contact: NextPage = () => {
             Canada, Toronto:
             {'\n'}
             <Link href={ContactPaths.phone}>
-              <PageExternalLink>+1 437 345-2001</PageExternalLink>
+              <PageExternalLink>+1 437 345 2001</PageExternalLink>
             </Link>
           </PageParagraph>
           <FormContainer>
@@ -56,8 +61,9 @@ const Contact: NextPage = () => {
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
-              onSubmit={(values) => {
-                console.log(values);
+              onSubmit={(values, { resetForm }) => {
+                emailjs.send('service_1nngi94', 'template_oai0932', values, 'nHJAuPWVKtfYFq7fQ');
+                resetForm();
               }}
             >
               {({
@@ -69,6 +75,7 @@ const Contact: NextPage = () => {
                     error={errors.name}
                     handleChange={handleChange}
                     name="name"
+                    type="text"
                     value={values.name}
                     label="Name *"
                     placeholder="Enter your name"
@@ -78,9 +85,20 @@ const Contact: NextPage = () => {
                     error={errors.email}
                     handleChange={handleChange}
                     name="email"
+                    type="text"
                     value={values.email}
                     label="Email *"
                     placeholder="Enter your email"
+                  />
+                  <Input
+                    touched={touched.phone}
+                    error={errors.phone}
+                    handleChange={handleChange}
+                    name="phone"
+                    type="number"
+                    value={values.phone}
+                    label="Phone"
+                    placeholder="Enter your phone"
                   />
                   <Input
                     touched={touched.message}
@@ -92,7 +110,9 @@ const Contact: NextPage = () => {
                     label="Message *"
                     placeholder="Enter your message"
                   />
-                  <Button type="submit" style={{ marginTop: '36px' }} text="Submit" />
+                  <FormButtonContainer>
+                    <Button type="submit" style={{ marginTop: '36px' }} text="Submit" />
+                  </FormButtonContainer>
                 </Form>
               )}
             </Formik>

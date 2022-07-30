@@ -12,6 +12,7 @@ export const FooterContainer = styled('footer')<{ theme?: Theme }>(({ theme }) =
 
   [theme.breakpoints.down('md')]: {
     gridTemplateColumns: '1fr 1fr 1fr',
+    width: '90vw',
 
     '& > :first-child': {
       gridColumn: 2,
@@ -22,6 +23,7 @@ export const FooterContainer = styled('footer')<{ theme?: Theme }>(({ theme }) =
   [theme.breakpoints.down('sm')]: {
     gridTemplateColumns: '1fr',
     gridGap: '32px',
+    width: '70vw',
     justifyItems: 'center',
     textAlign: 'center',
 

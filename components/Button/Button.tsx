@@ -9,6 +9,7 @@ interface ButtonProps {
 
 const BrandButton = styled('button')(() => ({
   color: '#ffffff',
+  outline: 'none',
   border: '1px solid #ffffff',
   textTransform: 'uppercase',
   background: 'transparent',

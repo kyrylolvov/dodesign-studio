@@ -1,13 +1,30 @@
 import styled from '@emotion/styled';
+import { Theme } from '@mui/material';
 
 export const PageContainer = styled('div')(() => ({
   paddingTop: '60px',
 }));
 
-export const PageContent = styled('div')(() => ({
-  width: '80vw',
-  paddingTop: '70px',
+export const PageContent = styled('div')<{ theme?: Theme }>(({ theme }) => ({
+  width: '1140px',
+  padding: '70px 15px 0 15px',
   margin: '0 auto',
+
+  [theme.breakpoints.down('lg')]: {
+    width: '960px',
+  },
+
+  [theme.breakpoints.down('md')]: {
+    width: '720px',
+  },
+
+  [theme.breakpoints.down('sm')]: {
+    width: '540px',
+  },
+
+  [theme.breakpoints.down('xs')]: {
+    width: '100vw',
+  },
 }));
 
 export const PageTitle = styled('h1')(() => ({
@@ -36,11 +53,21 @@ export const PageParagraph = styled('p')(() => ({
   color: '#ffffff',
 }));
 
-export const PageContentHalf = styled('div')(() => ({
+export const PageContentHalf = styled('div')<{ theme?: Theme }>(({ theme }) => ({
   display: 'grid',
   gridTemplateColumns: '10fr 9fr',
   gridGap: '96px',
   gap: '96px',
+
+  [theme.breakpoints.down('md')]: {
+    gridTemplateColumns: '1fr 1fr',
+    gridGap: '64px',
+    gap: '64px',
+  },
+
+  [theme.breakpoints.down('sm')]: {
+    gridTemplateColumns: '1fr',
+  },
 }));
 
 export const PageExternalLink = styled('a')(() => ({

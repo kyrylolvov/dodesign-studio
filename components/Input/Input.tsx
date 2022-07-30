@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import styled from '@emotion/styled';
+import InputMask from 'react-input-mask';
+import { Theme } from '@mui/material';
 
 interface InputProps {
   label: string;
@@ -26,7 +28,7 @@ const InputLabel = styled('div')(() => ({
   color: '#ffffff',
 }));
 
-const InputField = styled('input')<{ error: boolean }>(({ error }) => ({
+const InputField = styled('input')<{ error: boolean, theme?: Theme }>(({ error, theme }) => ({
   height: '40px',
   width: '350px',
   lineHeight: '40px',
@@ -43,9 +45,13 @@ const InputField = styled('input')<{ error: boolean }>(({ error }) => ({
     color: '#51545A',
     fontWeight: 400,
   },
+
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+  },
 }));
 
-const TextareaField = styled('textarea')<{ error: boolean }>(({ error }) => ({
+const TextareaField = styled('textarea')<{ error: boolean, theme?: Theme }>(({ error, theme }) => ({
   width: '350px',
   color: '#ffffff',
   background: '#181818',
@@ -63,6 +69,10 @@ const TextareaField = styled('textarea')<{ error: boolean }>(({ error }) => ({
     color: '#51545A',
     fontWeight: 400,
   },
+
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+  },
 }));
 
 const InputError = styled('label')(() => ({
@@ -74,22 +84,30 @@ const InputError = styled('label')(() => ({
 
 const Input: React.FC<InputProps> = ({
   label, placeholder, name, value, touched, error, type, handleChange,
-}) => {
-  console.log('input');
-
-  return (
-    <InputWrapper>
-      <InputLabel>{label}</InputLabel>
-      {type === 'textarea' ? (
-        <TextareaField
-          error={!!touched && !!error}
-          onChange={handleChange}
-          name={name}
-          value={value}
-          rows={2}
-          placeholder={placeholder}
-        />
-      ) : (
+}) => (
+  <InputWrapper>
+    <InputLabel>{label}</InputLabel>
+    {type === 'textarea' && (
+      <TextareaField
+        error={!!touched && !!error}
+        onChange={handleChange}
+        name={name}
+        value={value}
+        rows={2}
+        placeholder={placeholder}
+      />
+    )}
+    {type === 'text' && (
+      <InputField
+        error={!!touched && !!error}
+        onChange={handleChange}
+        name={name}
+        value={value}
+        placeholder={placeholder}
+      />
+    )}
+    {type === 'number' && (
+      <InputMask value={value} onChange={handleChange} mask="+1 \(999) 999 9999">
         <InputField
           error={!!touched && !!error}
           onChange={handleChange}
@@ -97,10 +115,19 @@ const Input: React.FC<InputProps> = ({
           value={value}
           placeholder={placeholder}
         />
-      )}
-      {touched && error && <InputError>{error}</InputError>}
-    </InputWrapper>
-  );
-};
+      </InputMask>
+    )}
+    {/* {type === 'text' && (
+          <InputField
+            error={!!touched && !!error}
+            onChange={handleChange}
+            name={name}
+            value={value}
+            placeholder={placeholder}
+          />,
+      )} */}
+    {touched && error && <InputError>{error}</InputError>}
+  </InputWrapper>
+);
 
 export default Input;
