@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Theme } from '@mui/material';
 
 export const FooterContainer = styled('footer')<{ theme?: Theme }>(({ theme }) => ({
-  width: '80vw',
+  width: '1140px',
   fontSize: '0.875rem',
   padding: '36px 0',
   margin: '64px auto 0 auto',
@@ -10,9 +10,13 @@ export const FooterContainer = styled('footer')<{ theme?: Theme }>(({ theme }) =
   display: 'grid',
   gridTemplateColumns: '1fr 1fr 1fr 1fr',
 
+  [theme.breakpoints.down('lg')]: {
+    width: '960px',
+  },
+
   [theme.breakpoints.down('md')]: {
     gridTemplateColumns: '1fr 1fr 1fr',
-    width: '90vw',
+    width: '720px',
 
     '& > :first-child': {
       gridColumn: 2,
@@ -23,7 +27,7 @@ export const FooterContainer = styled('footer')<{ theme?: Theme }>(({ theme }) =
   [theme.breakpoints.down('sm')]: {
     gridTemplateColumns: '1fr',
     gridGap: '32px',
-    width: '70vw',
+    width: '540px',
     justifyItems: 'center',
     textAlign: 'center',
 
@@ -31,6 +35,10 @@ export const FooterContainer = styled('footer')<{ theme?: Theme }>(({ theme }) =
       gridColumn: 1,
       gridRow: 4,
     },
+  },
+
+  [theme.breakpoints.down('xs')]: {
+    width: '100vw',
   },
 }));
 

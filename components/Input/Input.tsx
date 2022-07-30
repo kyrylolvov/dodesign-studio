@@ -39,6 +39,7 @@ const InputField = styled('input')<{ error: boolean, theme?: Theme }>(({ error, 
   fontSize: '16px',
   borderBottom: error ? '1px solid #f00' : '1px solid #fff',
   overflow: 'visible',
+  borderRadius: 0,
   outline: 'none',
 
   '&::placeholder': {
@@ -57,6 +58,7 @@ const TextareaField = styled('textarea')<{ error: boolean, theme?: Theme }>(({ e
   background: '#181818',
   border: 'none',
   fontWeight: 300,
+  borderRadius: 0,
   fontSize: '16px',
   borderBottom: error ? '1px solid #f00' : '1px solid #fff',
   overflow: 'auto',
