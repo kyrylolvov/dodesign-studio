@@ -1,9 +1,34 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
+import * as yup from 'yup';
+import { Formik, Form } from 'formik';
 
-import { PageContent, PageContainer, PageTitle } from '../styles/css';
+import Button from '../components/Button/Button';
+import Input from '../components/Input/Input';
 
-const Contact: NextPage = () => (
+import { FormContainer, FormSubTitle, FormTitle } from '../styles/contact';
+
+import {
+  PageContent, PageContainer, PageTitle, PageContentHalf, PageParagraph, PageExternalLink,
+} from '../styles/css';
+
+import { ContactPaths } from '../utils/routes';
+
+const Contact: NextPage = () => {
+  const initialValues = {
+    name: '',
+    email: '',
+    message: '',
+  };
+
+  const validationSchema = yup.object({
+    name: yup.string().required('This field is required.'),
+    email: yup.string().required('This field is required.').email('Please enter a valid email address.'),
+    message: yup.string().required('This field is required.'),
+  });
+
+  return (
     <PageContainer>
       <Head>
         <title>Contact - - DoDesign</title>
@@ -11,8 +36,71 @@ const Contact: NextPage = () => (
       </Head>
       <PageContent>
         <PageTitle>Contact</PageTitle>
+        <PageContentHalf style={{ marginTop: '64px' }}>
+          <PageParagraph>
+            If you want to order a project or have any questions, please contact us by email and phone.
+            {'\n\n'}
+            <Link href={ContactPaths.email}>
+              <PageExternalLink>mail@dodesign.com</PageExternalLink>
+            </Link>
+            {'\n\n'}
+            Canada, Toronto:
+            {'\n'}
+            <Link href={ContactPaths.phone}>
+              <PageExternalLink>+1 437 345-2001</PageExternalLink>
+            </Link>
+          </PageParagraph>
+          <FormContainer>
+            <FormTitle>Feedback Form</FormTitle>
+            <FormSubTitle>* Required fields</FormSubTitle>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={(values) => {
+                console.log(values);
+              }}
+            >
+              {({
+                values, errors, touched, handleChange,
+              }) => (
+                <Form autoComplete="off">
+                  <Input
+                    touched={touched.name}
+                    error={errors.name}
+                    handleChange={handleChange}
+                    name="name"
+                    value={values.name}
+                    label="Name *"
+                    placeholder="Enter your name"
+                  />
+                  <Input
+                    touched={touched.email}
+                    error={errors.email}
+                    handleChange={handleChange}
+                    name="email"
+                    value={values.email}
+                    label="Email *"
+                    placeholder="Enter your email"
+                  />
+                  <Input
+                    touched={touched.message}
+                    error={errors.message}
+                    handleChange={handleChange}
+                    name="message"
+                    type="textarea"
+                    value={values.message}
+                    label="Message *"
+                    placeholder="Enter your message"
+                  />
+                  <Button type="submit" style={{ marginTop: '36px' }} text="Submit" />
+                </Form>
+              )}
+            </Formik>
+          </FormContainer>
+        </PageContentHalf>
       </PageContent>
     </PageContainer>
-);
+  );
+};
 
 export default Contact;

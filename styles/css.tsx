@@ -30,8 +30,25 @@ export const PageTitle = styled('h1')(() => ({
 
 export const PageParagraph = styled('p')(() => ({
   fontWeight: 300,
+  margin: '0',
   whiteSpace: 'pre-wrap',
-  fontSize: '1.125rem',
   lineHeight: '1.5rem',
   color: '#ffffff',
+}));
+
+export const PageContentHalf = styled('div')(() => ({
+  display: 'grid',
+  gridTemplateColumns: '10fr 9fr',
+  gridGap: '96px',
+  gap: '96px',
+}));
+
+export const PageExternalLink = styled('a')(() => ({
+  textDecoration: 'underline',
+  cursor: 'pointer',
+  transition: 'all 0.4s',
+
+  '&:hover': {
+    color: '#bebebe',
+  },
 }));

@@ -6,7 +6,8 @@ body {
   background: #181818;
 }
 
-button {
+button,
+input {
   font-family: 'Avenir Next Cyr', sans-serif;
 }
 
@@ -26,6 +27,12 @@ h1 {
   font-family: 'Avenir Next Cyr';
   src: url('../public/fonts/AvenirNextCyr-Light.woff') format('opentype');
   font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Avenir Next Cyr';
+  src: url('../public/fonts/AvenirNextCyr-Regular.woff') format('opentype');
+  font-weight: 400;
 }
 
 @font-face {

@@ -3,10 +3,11 @@ import styled from '@emotion/styled';
 
 interface ButtonProps {
   text: string;
+  type?: 'button' | 'submit' | 'reset' | undefined;
   style?: React.CSSProperties | undefined;
 }
 
-export const BrandButton = styled('button')(() => ({
+const BrandButton = styled('button')(() => ({
   color: '#ffffff',
   border: '1px solid #ffffff',
   textTransform: 'uppercase',
@@ -23,9 +24,10 @@ export const BrandButton = styled('button')(() => ({
   },
 }));
 
-const Button: React.FC<ButtonProps> = ({
-  text,
-  style,
-}) => <BrandButton style={style}>{text}</BrandButton>;
+const Button: React.FC<ButtonProps> = ({ text, style, type }) => (
+  <BrandButton type={type ?? 'button'} style={style}>
+    {text}
+  </BrandButton>
+);
 
 export default Button;
