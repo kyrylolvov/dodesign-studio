@@ -7,7 +7,7 @@ export const PageContainer = styled('div')(() => ({
 
 export const PageContent = styled('div')<{ theme?: Theme }>(({ theme }) => ({
   width: '1140px',
-  padding: '70px 15px 0 15px',
+  padding: '70px 16px 0 16px',
   margin: '0 auto',
 
   [theme.breakpoints.down('lg')]: {

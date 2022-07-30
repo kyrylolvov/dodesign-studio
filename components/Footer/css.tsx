@@ -38,6 +38,7 @@ export const FooterContainer = styled('footer')<{ theme?: Theme }>(({ theme }) =
   },
 
   [theme.breakpoints.down('xs')]: {
+    padding: '36px 16',
     width: '100vw',
   },
 }));
